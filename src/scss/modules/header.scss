@@ -1,0 +1,32 @@
+.header {
+    @apply py-6 fixed top-0 left-0 right-0 bg-white;
+
+    &__links {
+        @apply flex justify-center;
+    }
+
+    &__item {
+        @apply relative [&:not(:first-child)]:ml-[72px];
+    }
+
+    &__link {
+        @apply px-2 py-1 text-body-2 rounded-md text-light font-bold tracking-wide transition;
+
+        &:not(._active):hover {
+            @apply text-white bg-dark;
+        }
+
+        &::before {
+            @apply mr-2 absolute top-1/2 right-full -translate-y-1/2 bg-dark h-[8px] w-[20px] rounded-lg scale-0 opacity-0 transition;
+            content: '';
+        }
+
+        &._active {
+            @apply text-dark cursor-default;
+
+            &::before {
+                @apply scale-100 opacity-100;
+            }
+        }
+    }
+}

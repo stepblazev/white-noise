@@ -1,0 +1,27 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './fonts.scss';
+
+* {
+    line-height: 1;
+}
+
+body {
+    font-family: 'JetBrainsMono';
+    background-color: #ffffff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#app {
+    @apply min-h-[100vh];
+}
+
+svg {
+    @apply w-full h-full;
+}
+
+@import "./modules/header.scss";
+@import "./modules/home.scss";
