@@ -1,4 +1,4 @@
-import { getRandomNumber } from "../utils";
+import { getRandomNumber } from '../utils';
 
 type AllowedNodes = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement;
 
@@ -21,7 +21,6 @@ export class LineShuffler {
     private _interval?: number = undefined;
     private _speed: number = 150;
     private _pause: number = 1000;
-
 
     constructor(props: LineShufflerProps) {
         this._node = props.node;
@@ -67,7 +66,10 @@ export class LineShuffler {
             if (letterIndex === lineText.length) {
                 clearInterval(this._interval);
                 setTimeout(() => {
-                    this._interval = setInterval(this.getUpdateFn(lineIndex, letterIndex, true), this._speed);
+                    this._interval = setInterval(
+                        this.getUpdateFn(lineIndex, letterIndex, true),
+                        this._speed
+                    );
                 }, this._pause);
             } else if (letterIndex === -1 && reverse) {
                 clearInterval(this._interval);
@@ -82,6 +84,9 @@ export class LineShuffler {
 
     private updateNode(line: Partial<LineShufflerLine>) {
         if (line.text !== undefined) this._node.textContent = `_${line.text}`;
-        if (line.color !== undefined) this._node.style.color = line.color;
+        if (line.color !== undefined) {
+            this._node.style.color = line.color;
+            this._node.style.filter = `drop-shadow(0 2px 3px ${line.color})`;
+        }
     }
 }
