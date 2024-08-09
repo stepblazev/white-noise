@@ -17,7 +17,7 @@
         }
 
         &::before {
-            @apply mr-2 absolute top-1/2 right-full -translate-y-1/2 bg-dark h-[8px] w-[20px] rounded-lg scale-0 opacity-0 transition;
+            @apply mr-2 absolute top-1/2 right-full -translate-y-1/2 bg-dark h-[8px] w-[20px] rounded-lg scale-0 opacity-0 transition pointer-events-none;
             content: '';
         }
 

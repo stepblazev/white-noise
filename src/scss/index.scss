@@ -19,8 +19,16 @@ body {
     @apply min-h-[100vh];
 }
 
-svg {
-    @apply w-full h-full;
+#cursor {
+    @apply absolute -top-10 z-40 bg-dark w-[20px] h-[20px] border-[1px] border-[transparent] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition duration-300 drop-shadow-lg;
+    
+    &._hidden {
+        @apply scale-0;
+    }
+    
+    &._link {
+        @apply bg-opacity-0 scale-[3] border-dark;
+    }
 }
 
 @import "./modules/header.scss";
