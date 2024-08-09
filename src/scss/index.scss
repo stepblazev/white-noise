@@ -6,11 +6,13 @@
 
 @import "./modules/header.scss";
 @import "./modules/home.scss";
+
 * {
     line-height: 1;
 }
 
 body {
+    @apply text-dark;
     font-family: 'JetBrainsMono';
     background-color: #ffffff;
     overflow-x: hidden;
