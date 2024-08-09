@@ -2,7 +2,7 @@
     @apply flex justify-center;
 
     &__link {
-        @apply [&:not(:first-child)]:ml-8 p-4 flex items-center justify-center text-[16px] rounded-full text-gray transition-all shadow-dark/10;
+        @apply [&:not(:first-child)]:ml-8 p-4 flex items-center justify-center text-[16px] rounded-full text-gray transition-all shadow-dark/10 bg-white;
         box-shadow: 20px 20px 60px var(--tw-shadow-color),
             -20px -20px 60px #ffffff;
 

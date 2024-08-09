@@ -46,7 +46,16 @@ export default {
             'laptop': '1024px',
             'desktop': '1280px',
         },
-        extend: {},
+        extend: {
+            keyframes: {
+                FadeIn: {
+                    '0%': { opacity: '0' },
+                },
+            },
+            animation: {
+                fadein: 'FadeIn 1s ease-in-out',
+            },
+        },
     },
     plugins: [],
 }

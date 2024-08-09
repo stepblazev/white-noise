@@ -24,24 +24,50 @@ lineShuffler.start();
 /* Настройки курсора */
 const $cursor = document.getElementById('cursor') as HTMLDivElement;
 
+let lastMouseX = 0;
+let lastMouseY = 0;
+
 window.addEventListener('mousemove', (event: MouseEvent) => {
     $cursor.classList.remove('_hidden')
+
+    lastMouseX = event.clientX;
+    lastMouseY = event.clientY;
     
     $cursor.style.left = `${event.pageX}px`;
     $cursor.style.top = `${event.pageY}px`;
-    
+
     const $target = event.target as HTMLElement;
     const tags = ['A', 'BUTTON', 'INPUT'];
-    if (tags.includes($target.tagName) || tags.includes($target.parentElement!.tagName)) {
+    if (
+        tags.includes($target.tagName) ||
+        ($target.parentElement && tags.includes($target.parentElement?.tagName))
+    ) {
         $cursor.classList.add('_link');
     } else {
         $cursor.classList.remove('_link');
     }
 });
 
+window.addEventListener('scroll', () => {
+    $cursor.style.left = `${lastMouseX + window.scrollX}px`;
+    $cursor.style.top = `${lastMouseY + window.scrollY}px`;
+});
+
 window.addEventListener('mouseout', () => {
     $cursor.classList.add('_hidden');
 });
 
+/* Настройки хедера при скролле */
+const $header = document.querySelector('.header') as HTMLDivElement;
+const checkScrollPositionForHeader = () => {
+    if (window.scrollY > 180) {
+        $header.classList.add('_scrolled');
+    } else {
+        $header.classList.remove('_scrolled');
+    }
+};
+
+window.addEventListener('load', checkScrollPositionForHeader);
+window.addEventListener('scroll', checkScrollPositionForHeader);
 
 
