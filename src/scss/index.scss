@@ -6,9 +6,14 @@
 
 @import "./modules/header.scss";
 @import "./modules/home.scss";
+@import "./modules/cv.scss";
 
 * {
     line-height: 1;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -37,11 +42,3 @@ body {
     }
 }
 
-.division {
-    &__title{
-        @apply pb-2 border-b-[3px] border-dark uppercase text-dark text-[24px] font-bold tracking-widest;
-    }
-    &__content {
-        @apply mt-4;
-    }
-}

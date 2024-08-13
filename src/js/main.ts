@@ -37,7 +37,7 @@ window.addEventListener('mousemove', (event: MouseEvent) => {
     $cursor.style.top = `${event.pageY}px`;
 
     const $target = event.target as HTMLElement;
-    const tags = ['A', 'BUTTON', 'INPUT'];
+    const tags = ['A', 'BUTTON', 'INPUT', 'TEXTAREA'];
     if (
         tags.includes($target.tagName) ||
         ($target.parentElement && tags.includes($target.parentElement?.tagName))

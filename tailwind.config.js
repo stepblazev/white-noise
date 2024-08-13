@@ -1,3 +1,5 @@
+import { transform } from 'typescript';
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -51,9 +53,15 @@ export default {
                 FadeIn: {
                     '0%': { opacity: '0' },
                 },
+                Leviatation: {
+                    '0%': { transform: 'translateY(0px) rotate(5deg)' },
+                    '50%': { transform: 'translateY(16px) rotate(-5deg)' },
+                    '100%': { transform: 'translateY(0px) rotate(5deg)' }
+                }
             },
             animation: {
                 fadein: 'FadeIn 1s ease-in-out',
+                leviatation: 'Leviatation 5s ease-in-out infinite alternate',
             },
         },
     },
