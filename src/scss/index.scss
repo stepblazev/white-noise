@@ -4,6 +4,7 @@
 
 @import './fonts.scss';
 
+@import "./modules/ui.scss";
 @import "./modules/header.scss";
 @import "./modules/home.scss";
 @import "./modules/cv.scss";
@@ -32,13 +33,20 @@ body {
 
 #cursor {
     @apply absolute -top-10 z-40 bg-dark w-[20px] h-[20px] border-[1px] border-[transparent] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition duration-300 drop-shadow-lg;
-    
+
     &._hidden {
         @apply scale-0;
     }
-    
+
     &._link {
         @apply bg-opacity-20 scale-[3] border-dark;
     }
 }
 
+#progressbar {
+    @apply fixed bottom-0 left-1/2 -translate-x-1/2 w-0 h-[5px] bg-dark;
+    
+    &._full {
+        // @apply opacity-0;
+    }
+}

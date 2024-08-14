@@ -1,0 +1,35 @@
+.title {
+    @apply uppercase text-dark text-[24px] font-bold tracking-widest text-center;
+}
+
+.control {
+    @apply flex flex-col;
+
+    &__label {
+        @apply text-body-3 text-light cursor-pointer transition;
+    }
+
+    &:focus-within &__label {
+        @apply text-dark drop-shadow-md;
+    }
+
+    &__input {
+        @apply mt-2 py-3 px-4 bg-light/50 rounded-md outline-none text-body-3 transition border border-light/50 backdrop-blur-md;
+
+        &:hover {
+            @apply bg-light/25 border-light/25;
+        }
+
+        &:focus {
+            @apply border-dark bg-light/25 drop-shadow-md;
+        }
+    }
+}
+
+.btn {
+    @apply text-body-3 text-light p-4 rounded-md bg-dark transition cursor-pointer;
+
+    &:hover {
+        @apply bg-dark/90;
+    }
+}
