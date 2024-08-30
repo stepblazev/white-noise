@@ -1,9 +1,9 @@
 import { LineShuffler } from "./modules/LineShuffler";
-import jumpTo from 'jump.js'
+import { jumpTo } from "./utils";
 
 window.scrollTo({ top: 0, behavior: 'instant' })
 
-/* Настройки сменяющегося текста в приветствии */
+// #region settings for changing text in the greeting
 const $toolNames = document.getElementById('toolNames');
 if ($toolNames) {
     const lineShuffler = new LineShuffler({
@@ -28,9 +28,10 @@ if ($toolNames) {
 } else {
     console.error('Tool names holder not found');
 }
+// #endregion
 
 
-/* Настройки курсора */
+// #region custom cursor settings
 const $cursor = document.getElementById('cursor') as HTMLDivElement | null;
 
 if ($cursor) {
@@ -69,9 +70,10 @@ if ($cursor) {
 } else {
     console.error('Custom cursor not found');
 }
+// #endregion
 
 
-/* Настройки хедера при скролле */
+// #region header settings on scroll
 const $header = document.querySelector('.header') as HTMLDivElement | null;
 if ($header) {
     const checkScrollPositionForHeader = () => {
@@ -87,70 +89,92 @@ if ($header) {
 } else {
     console.error('Header not found');
 }
+// #endregion
 
 
-/* Настройки прогрессбара */
+// #region progressbar settings
 const $progressbar = document.getElementById('progressbar') as HTMLDivElement | null;
 if ($progressbar) {
     window.addEventListener('scroll', function () {
         const widthCoef = window.scrollY / (document.documentElement.offsetHeight - window.innerHeight);
         $progressbar.style.width = `${widthCoef * 100}%`;
-
-        if (widthCoef >= 1) {
-            $progressbar.classList.add('_full');
-        } else {
-            $progressbar.classList.remove('_full');
-        }
     });
 } else {
     console.error('Progressbar not found');
 }
+// #endregion
 
 
-/* Настройка навбара */
+// #region navbar and sections settings
 const navbarLinks = document.querySelectorAll('.header__link') as NodeListOf<HTMLAnchorElement>;
+const sections = document.querySelectorAll('[data-observe]');
 
 const setActiveLink = ($targetLink: HTMLAnchorElement) => {
+    for (let $link of navbarLinks) {
+        $link.classList.remove('_active');
+    }
     $targetLink.classList.add('_active');
-    [...navbarLinks].forEach($link => {
-        if ($link !== $targetLink) {
-            $link.classList.remove('_active');
-        }
-    })
 };
 
 const isActiveLink = ($targetLink: HTMLAnchorElement): boolean => {
     return $targetLink.classList.contains('_active');
 };
 
+const unobserveAllSections = () => {
+    sections.forEach($section => sectionsObserver.unobserve($section));
+};
+
+const observeAllSections = () => {
+    sections.forEach($section => sectionsObserver.observe($section));
+};
+
+let prevTimeout: number;
+
 for (let $link of navbarLinks) {
     $link.addEventListener('click', function (event: MouseEvent) {
         event.preventDefault();
+        const $targetSection = document.querySelector($link.getAttribute('href')!);
 
-        if (!isActiveLink($link)) {
-            const href = $link.getAttribute('href')!.replace('#', '');
-            const $target = document.querySelector(`[id="${href}"]`);
-
+        if (!isActiveLink($link) && $targetSection) {
             setActiveLink($link);
-
-            jumpTo($target, {
+            unobserveAllSections();
+            
+            jumpTo($targetSection, {
                 offset: -100,
-                duration: 600,
+                duration: 700,
             });
+
+            if (prevTimeout) {
+                clearTimeout(prevTimeout);
+            }
+            
+            prevTimeout = setTimeout(() => {
+                prevTimeout = 0;
+                observeAllSections();
+            }, 800); // same delay as jumpTo duration (or greater) to avoid intersection observer
         }
     });
 }
 
-// const observerCallback: IntersectionObserverCallback = (entries, observer) => {
-//     entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//         }
-//     });
-// }
+const observerCallback: IntersectionObserverCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            for (let $link of navbarLinks) {
+                if ($link.getAttribute('href') === `#${sectionId}`) {
+                    setActiveLink($link);
+                    break;
+                }
+            }
+        }
+    });
+}
 
-// const sectionsObserver = new IntersectionObserver(observerCallback, { });
+const sectionsObserver = new IntersectionObserver(observerCallback, {
+    root: null,
+    rootMargin: '-90% 0px 0px 0px',
+    threshold: 0
+});
 
-// const sections = document.querySelectorAll('[data-observe]');
-// for (let $section of sections) {
-//     sectionsObserver.observe($section);
-// }
+observeAllSections();
+// #endregion

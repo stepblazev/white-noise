@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "type": "module",
     "scripts": {
-        "dev": "vite --host",
+        "dev": "vite --host --port 5000",
         "build": "vite build",
         "preview": "vite preview"
     },
@@ -16,8 +16,6 @@
         "vite": "^5.3.5"
     },
     "dependencies": {
-        "jump.js": "^1.0.2",
-        "swiper": "^11.1.9",
         "typescript": "^5.5.4"
     }
 }

@@ -25,7 +25,6 @@ export default {
         },
         fontFamily: {
             "primary": ['JetBrainsMono'],
-            "exo": ['Exo 2'],
         },
         colors: {
             white: "#ffffff",
@@ -50,6 +49,10 @@ export default {
         },
         extend: {
             keyframes: {
+                SlideTop: {
+                    '0%': { opacity: '0', transform: 'translateY(32px)' },
+                    '100%': { opacity: '1' },
+                },
                 FadeIn: {
                     '0%': { opacity: '0' },
                 },
@@ -60,8 +63,9 @@ export default {
                 }
             },
             animation: {
-                fadein: 'FadeIn 1s ease-in-out',
+                fadein: 'FadeIn 1.2s 0.1s ease-in-out backwards',
                 leviatation: 'Leviatation 5s ease-in-out infinite alternate',
+                slidetop: 'SlideTop 0.6s ease backwards'
             },
         },
     },

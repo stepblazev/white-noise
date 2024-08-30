@@ -1,5 +1,10 @@
-.cv-info {
+.divisions {
     @apply relative flex flex-col;
+
+    &::before {
+        content: '';
+        @apply absolute top-0 bottom-0 left-[50%] bg-light/50 rounded-full w-[2px];
+    }
 
     .division {
         @apply relative w-[48%];
@@ -19,7 +24,6 @@
         &::before {
             content: '';
             @apply absolute -right-[33px] top-1/2 -translate-y-1/2 w-[14px] h-[14px] bg-dark rounded-full shadow-lg shadow-dark/50;
-         
         }
 
         &:nth-child(even) {
@@ -28,16 +32,11 @@
             .division__icon {
                 @apply -right-8 left-[unset];
             }
-            
+
             &::before {
                 content: '';
                 @apply -left-[31px];
             }
         }
-    }
-
-    &::before {
-        content: '';
-        @apply absolute top-0 bottom-0 left-[50%] bg-light/50 rounded-full w-[2px];
     }
 }

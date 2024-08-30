@@ -1,0 +1,19 @@
+.project {
+    @apply min-h-[240px] basis-1/3 bg-light/50 rounded-md overflow-hidden;
+    
+    &__preview {
+        @apply object-cover w-full h-[240px];
+    }
+
+    &__content {
+        @apply p-4 flex flex-col items-start rounded-b-md bg-white/50 backdrop-blur-md transition duration-500;
+    }
+    
+    &__title {
+        @apply text-body-1 font-bold;
+    }
+    
+    &__description {
+        @apply mt-4 text-body-3 leading-normal;
+    }
+}
