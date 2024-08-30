@@ -51,7 +51,6 @@ export default {
             keyframes: {
                 SlideTop: {
                     '0%': { opacity: '0', transform: 'translateY(32px)' },
-                    '100%': { opacity: '1' },
                 },
                 FadeIn: {
                     '0%': { opacity: '0' },
