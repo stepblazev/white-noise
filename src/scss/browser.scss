@@ -1,0 +1,18 @@
+::selection {
+    @apply text-white bg-dark;
+}
+::-moz-selection {
+    @apply text-white bg-dark;
+}
+
+::-webkit-scrollbar {
+    @apply w-[8px];
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-white;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-dark;
+}

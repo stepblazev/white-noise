@@ -59,50 +59,53 @@
         </header>
 
         <main>
-            <section id="greeting" data-observe>
-                <div class="pt-[300px] flex flex-col items-center justify-end">
+            <section id="greeting" data-observe class="h-[100vh] h-[100dvh] relative">
+                
+                <div class="pb-12 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex flex-col items-center justify-end">
                     <div class="flex flex-col animate-fadein">
-                        <span class="text-[32px] self-start text-light">
-                            Добро пожаловать
+                        <span class="text-[18px] small:text-[24px] laptop:text-[32px] self-start text-light">
+                        Добро пожаловать
                         </span>
-                        <h1 class="mt-4 text-[68px] font-extrabold text-dark">
-                            Я <span class="py-2 px-4 inline-block rounded-md bg-dark text-white">ВЕБ</span>-РАЗРАБОТЧИК
+                        <h1 class="mt-4 text-[28px] small:text-[48px] laptop:text-[68px] font-extrabold text-dark whitespace-nowrap">
+                            Я <span class="py-2 px-2 small:px-4 inline-block rounded-md bg-dark text-white">ВЕБ</span>-РАЗРАБОТЧИК
                         </h1>
-                        <span id="toolNames" class="mt-4 min-h-[52px] self-end text-[52px] font-bold"></span>
+                        <span id="tool-names" class="mt-2 laptop:mt-4 self-end text-[24px] small:text-[38px] laptop:text-[52px] font-bold"></span>
                     </div>
                 </div>
 
-                <div class="mt-[280px] flex justify-center space-x-8">
-                    <a href="https://github.com/stepblazev" target="_blank" class="greeting-link"
-                        style="animation-delay: 0.4s;">
-                        <i class="fa-brands fa-github"></i>
-                        GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/eugene-ohvatuk-152103267/" target="_blank"
-                        class="greeting-link" style="animation-delay: 0.3s;">
-                        <i class="fa-brands fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-                    <a href="mailto:ohvatuki@gmail.com" target="_blank" class="greeting-link"
-                        style="animation-delay: 0.2s;">
-                        <i class="fa-solid fa-envelope"></i>
-                        Email
-                    </a>
-                    <a href="https://steamcommunity.com/id/stepblazev" target="_blank" class="greeting-link"
-                        style="animation-delay: 0.3s;">
-                        <i class="fa-brands fa-steam"></i>
-                        Steam
-                    </a>
-                    <a href="https://t.me/stepblazev" target="_blank" class="greeting-link"
-                        style="animation-delay: 0.4s;">
-                        <i class="fa-brands fa-telegram"></i>
-                        Telegram
-                    </a>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-[120px]">
+                    <div class="flex justify-center space-x-4 tablet:space-x-8">
+                        <a href="https://github.com/stepblazev" target="_blank" class="greeting-link"
+                            style="animation-delay: 0.4s;">
+                            <i class="fa-brands fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/eugene-ohvatuk-152103267/" target="_blank"
+                            class="greeting-link" style="animation-delay: 0.3s;">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:ohvatuki@gmail.com" target="_blank" class="greeting-link"
+                            style="animation-delay: 0.2s;">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://steamcommunity.com/id/stepblazev" target="_blank" class="greeting-link"
+                            style="animation-delay: 0.3s;">
+                            <i class="fa-brands fa-steam"></i>
+                            <span>Steam</span>
+                        </a>
+                        <a href="https://t.me/stepblazev" target="_blank" class="greeting-link"
+                            style="animation-delay: 0.4s;">
+                            <i class="fa-brands fa-telegram"></i>
+                            <span>Telegram</span>
+                        </a>
+                    </div>
                 </div>
             </section>
 
             <section id="about" data-observe class="container">
-                <div class="mt-[200px] relative">
+                <div class="mt-[120px] relative">
                     <div class="absolute right-0 top-[60px] w-[320px] h-[320px] drop-shadow-lg">
                         <img src="src/assets/images/avatar.jpg" alt="AVATAR"
                             class="w-full h-full object-cover object-center rounded-md relative z-10" />

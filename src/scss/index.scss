@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import './fonts.scss';
+@import './browser.scss';
 
 @import "./modules/header.scss";
 @import "./modules/divisions.scss";
@@ -10,15 +11,14 @@
 
 @layer base {
     body {
-        @apply text-dark leading-none;
-        font-family: 'JetBrainsMono';
-        background-color: #ffffff;
+        @apply text-dark leading-none bg-white;
+        font-family: 'JetBrainsMono', monospace;
         overflow-x: hidden;
         overflow-y: scroll;
     }
 
     #app {
-        @apply min-h-[100vh];
+        @apply min-h-[100vh] animate-bgmove;
         background-color: #ffffff;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23e2e2e2' fill-opacity='0.2'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
     }
@@ -54,16 +54,20 @@
     }
 
     .greeting-link {
-        @apply p-4 flex items-center justify-center text-[16px] rounded-full text-gray transition-all shadow-dark/10 bg-white animate-slidetop;
+        @apply p-4 flex items-center justify-center text-[18px] tablet:text-body-3 laptop:text-body-2 rounded-full text-gray transition-all shadow-dark/10 bg-white animate-slidetop;
         box-shadow: 20px 20px 60px var(--tw-shadow-color),
             -20px -20px 60px #ffffff;
 
         &:hover {
-            @apply px-8 text-white bg-dark shadow-dark/50;
+            @apply tablet:px-8 text-white bg-dark shadow-dark/50;
         }
 
         i {
-            @apply mr-2;
+            @apply tablet:mr-2;
+        }
+        
+        span {
+            @apply max-tablet:hidden;
         }
     }
 

@@ -4,7 +4,7 @@ import { hasTouchScreen, jumpTo } from "./utils";
 window.scrollTo({ top: 0, behavior: 'instant' })
 
 // #region settings for changing text in the greeting
-const $toolNames = document.getElementById('toolNames');
+const $toolNames = document.getElementById('tool-names');
 if ($toolNames) {
     const lineShuffler = new LineShuffler({
         node: $toolNames,
@@ -153,7 +153,7 @@ for (let $link of navbarLinks) {
             prevTimeout = setTimeout(() => {
                 prevTimeout = 0;
                 observeAllSections();
-            }, 1100); // same delay as jumpTo duration (or greater) to avoid intersection observer
+            }, 1000); // same delay as jumpTo duration (or greater) to avoid intersection observer
         }
     });
 }
@@ -174,7 +174,7 @@ const observerCallback: IntersectionObserverCallback = (entries, observer) => {
 
 const sectionsObserver = new IntersectionObserver(observerCallback, {
     root: null,
-    rootMargin: '-90% 0px 0px 0px',
+    rootMargin: '-100% 0px 0px 0px',
     threshold: 0
 });
 
