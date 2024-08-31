@@ -1,5 +1,5 @@
 import { LineShuffler } from "./modules/LineShuffler";
-import { jumpTo } from "./utils";
+import { hasTouchScreen, jumpTo } from "./utils";
 
 window.scrollTo({ top: 0, behavior: 'instant' })
 
@@ -34,12 +34,14 @@ if ($toolNames) {
 // #region custom cursor settings
 const $cursor = document.getElementById('cursor') as HTMLDivElement | null;
 
-if ($cursor) {
+if (hasTouchScreen()) {
+    $cursor?.remove();
+} else if ($cursor) {
     let lastMouseX = 0;
     let lastMouseY = 0;
 
     window.addEventListener('mousemove', (event: MouseEvent) => {
-        $cursor.classList.remove('_hidden')
+        $cursor.classList.remove('_hidden');
 
         lastMouseX = event.clientX;
         lastMouseY = event.clientY;
@@ -141,7 +143,7 @@ for (let $link of navbarLinks) {
             
             jumpTo($targetSection, {
                 offset: -100,
-                duration: 700,
+                duration: 1000,
             });
 
             if (prevTimeout) {
@@ -151,7 +153,7 @@ for (let $link of navbarLinks) {
             prevTimeout = setTimeout(() => {
                 prevTimeout = 0;
                 observeAllSections();
-            }, 800); // same delay as jumpTo duration (or greater) to avoid intersection observer
+            }, 1100); // same delay as jumpTo duration (or greater) to avoid intersection observer
         }
     });
 }

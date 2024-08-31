@@ -12,22 +12,34 @@
 <body>
     <div id="app">
 
-        <header class="header">
+        <header class="header animate-fadein">
             <div class="container">
-                <div class="relative animate-fadein">
+                <div class="relative max-tablet:-mx-4">
                     <nav id="navbar">
                         <ul class="header__links">
                             <li class="header__item">
-                                <a href="#greeting" class="header__link _active">Приветствие</a>
+                                <a href="#greeting" class="header__link _active">
+                                    <i class="fa-solid fa-code"></i>
+                                    Приветствие
+                                </a>
                             </li>
                             <li class="header__item">
-                                <a href="#about" class="header__link">Информация</a>
+                                <a href="#about" class="header__link">
+                                    <i class="fa-regular fa-address-card"></i>
+                                    Информация
+                                </a>
                             </li>
                             <li class="header__item">
-                                <a href="#projects" class="header__link">Проекты</a>
+                                <a href="#projects" class="header__link">
+                                    <i class="fa-regular fa-folder-closed"></i>
+                                    Мои проекты
+                                </a>
                             </li>
                             <li class="header__item">
-                                <a href="#feedback" class="header__link">Форма связи</a>
+                                <a href="#feedback" class="header__link">
+                                    <i class="fa-regular fa-comment-dots"></i>
+                                    Форма связи
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -312,7 +324,7 @@
         <div id="progressbar" class="progressbar"></div>
     </div>
 
-    <script type="module" src="src/js/main.ts"></script>
+    <script type="module" src="src/ts/main.ts"></script>
     <script src="https://kit.fontawesome.com/38cd58b36f.js" crossorigin="anonymous"></script>
 </body>
 

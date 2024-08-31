@@ -18,7 +18,12 @@ export function jumpTo(target: Element, options: { offset: number, duration: num
         const timeElapled = currentTime - startTime;
         const progress = Math.min(timeElapled / options.duration, 1);
         const distance = targetPosition - startPosition;
-        window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
+        
+        window.scrollTo({
+            top: startPosition + distance * easeInOutQuad(progress),
+            left: 0,
+            behavior: 'instant'
+        });
         
         if (progress < 1) {
             currentJumpAnimation = requestAnimationFrame(animate);
@@ -28,4 +33,8 @@ export function jumpTo(target: Element, options: { offset: number, duration: num
     };
     
     currentJumpAnimation = requestAnimationFrame(animate);
+}
+
+export function hasTouchScreen(): boolean {
+    return ('ontouchstart' in window);
 }

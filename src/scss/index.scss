@@ -9,10 +9,6 @@
 @import "./modules/projects.scss";
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
-    }
-
     body {
         @apply text-dark leading-none;
         font-family: 'JetBrainsMono';
@@ -44,12 +40,12 @@
     .cursor {
         @apply absolute -top-10 z-40 bg-dark w-[20px] h-[20px] border-[1px] border-[transparent] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition duration-300 drop-shadow-lg;
 
-        &._hidden {
-            @apply scale-0;
-        }
-
         &._link {
             @apply bg-opacity-20 scale-[3] border-dark;
+        }
+        
+        &._hidden {
+            @apply scale-0;
         }
     }
 

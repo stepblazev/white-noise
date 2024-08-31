@@ -10,7 +10,6 @@ export default {
         container: {
             center: true,
             screens: {
-                tablet: '768px',
                 laptop: '1024px',
                 desktop: '1280px',
             },
@@ -38,14 +37,14 @@ export default {
             light: "#E0E0E0",
         },
         screens: {
-            'phone': '320px',
-            'phone2': '360px',
-            'phone3': '480px',
-            'small': '640px',
-            'tablet': '768px',
-            'tablet2': '800px',
-            'laptop': '1024px',
-            'desktop': '1280px',
+            'phone': '321px',
+            'phone2': '361px',
+            'phone3': '481px',
+            'small': '641px',
+            'tablet': '769px',
+            'tablet2': '801px',
+            'laptop': '1025px',
+            'desktop': '1281px',
         },
         extend: {
             keyframes: {

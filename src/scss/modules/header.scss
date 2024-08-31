@@ -1,28 +1,40 @@
 .header {
-    @apply py-6 fixed top-0 left-0 right-0 z-30 transition;
+    @apply fixed bottom-0 max-tablet:bg-white tablet:shadow-none left-0 right-0 z-30 transition;
+    @apply tablet:py-6 tablet:top-0 tablet:bottom-[unset];
+
+    -webkit-box-shadow: 0px -4px 15px -14px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px -4px 15px -14px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -4px 15px -14px rgba(0, 0, 0, 0.2);
 
     &._scrolled {
         @apply bg-white;
     }
-    
+
     &__links {
-        @apply flex justify-center;
+        @apply flex justify-start;
+        @apply laptop:justify-center laptop:space-x-[64px] tablet:space-x-[32px];
     }
 
     &__item {
-        @apply relative [&:not(:first-child)]:ml-[72px];
+        @apply relative max-tablet:flex-grow basis-0;
     }
 
     &__link {
-        @apply px-2 py-1 text-body-2 rounded-md text-light font-bold tracking-wide transition;
-
+        @apply py-3 flex flex-col gap-1 items-center text-[10px] text-light font-bold tracking-wide whitespace-nowrap transition;
+        @apply tablet:px-2 tablet:py-1 tablet:inline tablet:rounded-md tablet:text-body-2 phone3:text-body-3;
+        
         &:not(._active):hover {
-            @apply text-white bg-dark;
+            @apply tablet:text-white tablet:bg-dark;
         }
 
+        i {
+            @apply text-body-2;
+            @apply tablet:hidden;
+        }
+        
         &::before {
-            @apply mr-1 absolute top-1/2 right-full -translate-y-1/2 bg-dark h-[8px] w-[20px] rounded-lg scale-0 opacity-0 transition pointer-events-none;
             content: '';
+            @apply mr-1 absolute top-1/2 right-full -translate-y-1/2 bg-dark h-[8px] w-[20px] rounded-lg scale-0 opacity-0 transition pointer-events-none max-laptop:hidden;
         }
 
         &._active {
@@ -33,8 +45,9 @@
             }
         }
     }
-    
+
     &__lang {
-        @apply absolute top-1/2 -translate-y-1/2 right-0 p-2 text-gray rounded-md transition hover:bg-dark hover:text-white;
+        @apply fixed top-4 right-4 p-2 text-gray max-tablet:bg-white max-tablet:shadow rounded-md transition-colors hover:bg-dark hover:text-white;
+        @apply tablet:absolute tablet:top-1/2 tablet:-translate-y-1/2 tablet:right-0;
     }
 }
