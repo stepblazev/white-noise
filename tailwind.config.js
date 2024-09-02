@@ -54,16 +54,11 @@ export default {
                     '50%': { transform: 'translateY(16px) rotate(-5deg)' },
                     '100%': { transform: 'translateY(0px) rotate(5deg)' }
                 },
-                BackgroundMove: {
-                    '0%': { backgroundPositionX: '0px', backgroundPositionY: '0px' },
-                    '100%': { backgroundPositionX: '100px', backgroundPositionY: '200px' }
-                }
             },
             animation: {
                 fadein: 'FadeIn 1.2s 0.1s ease-in-out backwards',
                 leviatation: 'Leviatation 5s ease-in-out infinite alternate',
                 slidetop: 'SlideTop 0.6s ease backwards',
-                bgmove: 'BackgroundMove 3s linear 0s infinite normal'
             },
         },
     },

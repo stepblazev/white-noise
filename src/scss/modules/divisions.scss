@@ -1,41 +1,40 @@
 .divisions {
-    @apply relative flex flex-col;
+    @apply relative flex flex-col max-small:space-y-10;
 
     &::before {
         content: '';
-        @apply absolute top-0 bottom-0 left-[50%] bg-light/50 rounded-full w-[2px];
+        @apply max-small:hidden absolute top-0 bottom-0 left-[50%] -translate-x-1/2 bg-light/50 rounded-full w-[2px];
     }
 
     .division {
-        @apply relative w-[48%];
+        @apply relative small:w-[50%] small:pr-8;
 
         &__icon {
             @apply absolute -top-8 -left-8 text-dark/5 text-[160px] animate-leviatation;
         }
 
         &__title {
-            @apply uppercase text-dark text-[24px] font-bold tracking-widest relative z-10;
+            @apply uppercase text-dark text-[20px] tablet:text-[24px] font-bold tracking-widest relative z-10;
         }
 
         &__content {
-            @apply mt-4 relative z-10;
+            @apply mt-4 relative z-10 text-[12px] tablet:text-body-3 laptop:text-body-2;
         }
 
         &::before {
             content: '';
-            @apply absolute -right-[33px] top-1/2 -translate-y-1/2 w-[14px] h-[14px] bg-dark rounded-full shadow-lg shadow-dark/50;
+            @apply max-small:hidden absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-[14px] h-[14px] bg-dark rounded-full shadow-lg shadow-dark/50;
         }
 
         &:nth-child(even) {
-            @apply self-end;
+            @apply small:self-end small:pr-0 small:pl-8;
 
             .division__icon {
                 @apply -right-8 left-[unset];
             }
 
             &::before {
-                content: '';
-                @apply -left-[31px];
+                @apply left-0 -translate-x-1/2;
             }
         }
     }
