@@ -141,8 +141,10 @@ for (let $link of navbarLinks) {
             setActiveLink($link);
             unobserveAllSections();
             
+            const offset = window.innerWidth > 768 ? -250 : -100 ;
+            
             jumpTo($targetSection, {
-                offset: -100,
+                offset: offset,
                 duration: 1000,
             });
 
