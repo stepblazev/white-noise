@@ -1,0 +1,63 @@
+.socials {
+    @apply absolute left-1/2 -translate-x-1/2 bottom-[200px] small:bottom-[120px];
+    
+    &__row {
+        @apply flex justify-center gap-4;
+    }
+    
+    &__link {
+        @apply p-4 flex items-center justify-center text-[18px] tablet:text-body-3 laptop:text-body-2 rounded-full text-gray transition-all shadow-dark/10 bg-white animate-slidetop;
+        box-shadow: 20px 20px 60px var(--tw-shadow-color),
+            -20px -20px 60px #ffffff;
+
+        &:hover {
+            @apply tablet:px-8 text-white bg-dark shadow-dark/50;
+        }
+
+        i {
+            @apply tablet:mr-2;
+        }
+
+        span {
+            @apply max-tablet:hidden;
+        }
+        
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{0.2s + abs(3 - $i) * 0.1s};
+            }
+        }
+    }
+    
+    @media (min-width: 769px) {
+        &._fixed {
+            @apply fixed left-12 bottom-12 z-30;
+        }
+        
+        &._fixed &__row {
+            @apply flex-col items-center;
+        }
+        
+        &._fixed &__link {
+            @apply animate-fadein;
+            
+            &:hover {
+                @apply p-4;
+            }
+            
+            i {
+                @apply mr-0;
+            }
+            
+            span {
+                @apply hidden;
+            }
+            
+            @for $i from 1 through 5 {
+                &:nth-child(#{$i}) {
+                    animation-delay: #{0.15s * ($i - 1)};
+                }
+            }
+        }
+    }
+}

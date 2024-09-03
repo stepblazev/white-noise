@@ -141,7 +141,7 @@ for (let $link of navbarLinks) {
             setActiveLink($link);
             unobserveAllSections();
             
-            const offset = window.innerWidth > 768 ? -250 : -100 ;
+            const offset = window.innerWidth > 768 ? -250 : -200 ;
             
             jumpTo($targetSection, {
                 offset: offset,
@@ -181,4 +181,22 @@ const sectionsObserver = new IntersectionObserver(observerCallback, {
 });
 
 observeAllSections();
+// #endregion
+
+// #region switch socials to fixed when scrolled
+const $socialsObserveArea = document.getElementById('greeting') as HTMLDivElement;
+const $socials = document.querySelector('.socials') as HTMLDivElement;
+
+const socialsObserver = new IntersectionObserver((entries) => {
+    const targetEntry = entries[0];
+    if (targetEntry.isIntersecting) {
+        $socials.classList.remove('_fixed');
+    } else {
+        $socials.classList.add('_fixed');
+    }
+}, {
+    threshold: 0.2
+});
+
+socialsObserver.observe($socialsObserveArea);
 // #endregion
