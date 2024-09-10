@@ -1,0 +1,23 @@
+.popup {
+    @apply fixed top-0 right-0 bottom-0 left-0 bg-dark/50 z-40 transition-all duration-300;
+    
+    &__window {
+        @apply p-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md bg-white overflow-hidden transition duration-300;
+    }
+    
+    &__message {
+        @apply text-[20px] font-bold leading-normal;
+    }
+    
+    &__close {
+        @apply btn mt-8 ml-auto block;
+    }
+    
+    &._hidden {
+        @apply opacity-0 invisible;
+    }
+    
+    &._hidden &__window {
+        @apply scale-0 opacity-0;
+    }
+}

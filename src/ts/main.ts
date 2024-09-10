@@ -1,9 +1,11 @@
+import { gloader } from "./modules/gloader";
+import { popup } from "./modules/popup";
 import { TextShuffler } from "./modules/text-shuffler";
 import { hasTouchScreen, jumpTo } from "./utils";
 
 window.scrollTo({ top: 0, behavior: 'instant' })
 
-// #region settings for changing text in the greeting
+// #region | settings for changing text in the greeting
 const $toolNames = document.getElementById('tool-names');
 if ($toolNames) {
     const textShuffler = new TextShuffler({
@@ -31,7 +33,7 @@ if ($toolNames) {
 // #endregion
 
 
-// #region custom cursor settings
+// #region | custom cursor settings
 const $cursor = document.getElementById('cursor') as HTMLDivElement | null;
 
 if (hasTouchScreen()) {
@@ -75,7 +77,7 @@ if (hasTouchScreen()) {
 // #endregion
 
 
-// #region header settings on scroll
+// #region | header settings on scroll
 const $header = document.querySelector('.header') as HTMLDivElement | null;
 if ($header) {
     const checkScrollPositionForHeader = () => {
@@ -94,9 +96,11 @@ if ($header) {
 // #endregion
 
 
-// #region progressbar settings
+// #region | progressbar settings
 const $progressbar = document.getElementById('progressbar') as HTMLDivElement | null;
-if ($progressbar) {
+if (hasTouchScreen()) {
+    $progressbar?.remove();
+} else if ($progressbar) {
     window.addEventListener('scroll', function () {
         const widthCoef = window.scrollY / (document.documentElement.offsetHeight - window.innerHeight);
         $progressbar.style.width = `${widthCoef * 100}%`;
@@ -107,7 +111,7 @@ if ($progressbar) {
 // #endregion
 
 
-// #region navbar and sections settings
+// #region | navbar and sections settings
 const navbarLinks = document.querySelectorAll('.header__link') as NodeListOf<HTMLAnchorElement>;
 const sections = document.querySelectorAll('[data-observe]');
 
@@ -140,9 +144,9 @@ for (let $link of navbarLinks) {
         if (!isActiveLink($link) && $targetSection) {
             setActiveLink($link);
             unobserveAllSections();
-            
-            const offset = window.innerWidth > 768 ? -250 : -200 ;
-            
+
+            const offset = window.innerWidth > 768 ? -250 : -200;
+
             jumpTo($targetSection, {
                 offset: offset,
                 duration: 1000,
@@ -151,7 +155,7 @@ for (let $link of navbarLinks) {
             if (prevTimeout) {
                 clearTimeout(prevTimeout);
             }
-            
+
             prevTimeout = setTimeout(() => {
                 prevTimeout = 0;
                 observeAllSections();
@@ -184,7 +188,7 @@ observeAllSections();
 // #endregion
 
 
-// #region switch socials to fixed when scrolled
+// #region | switch socials to fixed when scrolled
 const $socialsObserveArea = document.getElementById('greeting') as HTMLDivElement;
 const $socials = document.querySelector('.socials') as HTMLDivElement;
 
@@ -203,7 +207,7 @@ socialsObserver.observe($socialsObserveArea);
 // #endregion
 
 
-// #region animate element apearing on scroll
+// #region | animate element apearing on scroll
 const elementsToApear = document.querySelectorAll<HTMLElement>('[data-animate]');
 
 const apearAnimationObserver = new IntersectionObserver((entries) => {
@@ -211,7 +215,7 @@ const apearAnimationObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.setAttribute('data-animate', '');
         }
-    })    
+    })
 }, {
     threshold: 0,
     rootMargin: '-70% 0% -30% 0%',
@@ -221,3 +225,36 @@ elementsToApear.forEach(element => {
     apearAnimationObserver.observe(element);
 });
 // #endregion
+
+
+// #region | feedback form via ajax
+const $feedbackForm = document.getElementById('feedback-form') as HTMLFormElement;
+
+$feedbackForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    gloader.enable();
+
+    const { action, method } = $feedbackForm;
+    const formData = new FormData($feedbackForm);
+
+    fetch(action, {
+        method: method,
+        body: formData
+    })
+        .then(response => response.json())
+        .then(response => {
+            if (response.success) {
+                $feedbackForm.reset();
+                popup.show(response.message);
+            } else {
+                popup.show(response.message);
+            }
+            gloader.disable();
+        })
+        .catch((error) => {
+            popup.show(error);
+            gloader.disable();
+        });
+});
+// #endregion
+

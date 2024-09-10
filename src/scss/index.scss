@@ -11,6 +11,8 @@
 @import "./modules/profile.scss";
 @import "./modules/divisions.scss";
 @import "./modules/projects.scss";
+@import "./modules/gloader.scss";
+@import "./modules/popup.scss";
 
 @layer base {
     body {
@@ -57,7 +59,7 @@
     }
 
     .cursor {
-        @apply absolute -top-10 z-40 bg-dark w-[20px] h-[20px] border-[1px] border-[transparent] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition duration-300 drop-shadow-lg;
+        @apply absolute -top-10 z-[100] bg-dark w-[20px] h-[20px] border-[1px] border-[transparent] -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none transition duration-300 drop-shadow-lg;
 
         &._link {
             @apply bg-opacity-20 scale-[3] border-dark;
@@ -84,7 +86,7 @@
         }
 
         &:focus-within &__label {
-            @apply text-dark drop-shadow-md;
+            @apply text-dark;
         }
 
         &__input {
@@ -95,7 +97,7 @@
             }
 
             &:focus {
-                @apply border-dark bg-light/25 drop-shadow-md;
+                @apply border-dark bg-light/25;
             }
         }
     }

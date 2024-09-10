@@ -8,8 +8,6 @@
     <meta name="keywords" content="Охватюк Евгений, веб-разработка, программирование, создание сайтов" />
     <title>Веб-разработка | Евгений Охватюк</title>
     <link rel="stylesheet" href="scss/index.scss" />
-    <script type="module" src="ts/main.ts" defer></script>
-    <script src="https://kit.fontawesome.com/38cd58b36f.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
@@ -109,7 +107,7 @@
             <section id="about" data-observe class="container">
                 <div class="mt-[60px] small:mt-[120px] relative">
                     <div class="avatar" data-animate="right">
-                        <img class="avatar__img" src="assets/images/avatar.jpg" alt="my photo" />
+                        <img class="avatar__img" src="assets/images/avatar.webp" alt="my photo" />
                         <div class="avatar__background"></div>
                     </div>
                     <h2 class="profile-name" data-animate="left">
@@ -237,7 +235,8 @@
                             </h3>
                             <div class="division__content">
                                 <ul class="text-dark/50 list-disc list-dash [&>li]:leading-normal space-y-1">
-                                    <li><b>Frontend:</b> HTML, CSS, JavaScript, TypeScript, Angular, React, SCSS, Tailwind, Bootstrap, Font Awesome</li>
+                                    <li><b>Frontend:</b> HTML, CSS, JavaScript, TypeScript, Angular, React, SCSS,
+                                        Tailwind, Bootstrap, Font Awesome</li>
                                     <li><b>Backend:</b> PHP, Laravel, NodeJS + Express</li>
                                     <li><b>Базы данных:</b> MySQL, PostgreSQL</li>
                                     <li><b>Прочее:</b> 1C-Bitrix, Docker, GitHub, GitLab</li>
@@ -256,8 +255,7 @@
                         <div class="projects" data-animate="bottom">
                             <div>
                                 <div class="project">
-                                    <img class="project__preview"
-                                        src="https://images.unsplash.com/photo-1471086569966-db3eebc25a59?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    <img class="project__preview" src="assets/images/template-1.webp"
                                         alt="project_title">
                                     <div class="project__content">
                                         <h3 class="project__title">Нет данных</h3>
@@ -279,7 +277,7 @@
                             <div>
                                 <div class="project">
                                     <img class="project__preview"
-                                        src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?q=80&w=2052&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        src="assets/images/template-2.webp"
                                         alt="project_title">
                                     <div class="project__content">
                                         <h3 class="project__title">Нет данных</h3>
@@ -325,31 +323,30 @@
             <section id="feedback" data-observe class="container">
                 <div class="my-[100px]">
                     <h2 class="title" data-animate="bottom">Обратная связь</h2>
-                    <form action="feedback.php" method="POST" class="mt-8 mx-auto small:w-[75%] tablet2:w-[50%]"
-                        data-animate="bottom">
+                    <form id="feedback-form" action="feedback.php" method="POST"
+                        class="mt-8 mx-auto small:w-[75%] tablet2:w-[50%]" data-animate="bottom">
                         <div class="control">
-                            <label class="control__label" for="feedback_email">
+                            <label class="control__label" for="feedback_name">
                                 <i class="fa-solid fa-circle-user"></i>
                                 Ваше имя
                             </label>
-                            <input class="control__input" type="text" id="feedback_email" placeholder="Имя"
-                                class="control" />
+                            <input class="control__input" type="text" name="NAME" required id="feedback_name" placeholder="Имя" />
                         </div>
                         <div class="mt-4 control">
                             <label class="control__label" for="feedback_email">
                                 <i class="fa-solid fa-envelope"></i>
                                 Ваш E-Mail
                             </label>
-                            <input class="control__input" type="text" id="feedback_email"
-                                placeholder="example@email.com" class="control" />
+                            <input class="control__input" type="email" name="EMAIL" required id="feedback_email"
+                                placeholder="example@email.com" />
                         </div>
                         <div class="mt-4 control">
                             <label class="control__label" for="feedback_message">
                                 <i class="fa-solid fa-envelope-open-text"></i>
                                 Сообщение
                             </label>
-                            <textarea class="control__input leading-normal h-[160px] resize-none" maxlength="2000"
-                                id="feedback_message" placeholder="Ваше сообщение..."></textarea>
+                            <textarea class="control__input leading-normal h-[160px] resize-none" name="MESSAGE" required
+                                maxlength="2000" id="feedback_message" placeholder="Ваше сообщение..."></textarea>
                         </div>
                         <button type="submit" class="mt-4 ml-auto block w-full small:w-[240px] btn">Отправить</button>
                     </form>
@@ -357,15 +354,36 @@
             </section>
         </main>
 
-        <footer class="py-[32px] bg-dark">
-            <div class="text-white text-[80px] text-center">
+        <footer class="pt-[32px] pb-[72px]">
+            <div class="text-dark text-[80px] text-center">
                 <i class="fa-solid fa-code"></i>
             </div>
         </footer>
-
+        
         <div id="cursor" class="cursor"></div>
         <div id="progressbar" class="progressbar"></div>
+        
+        <div class="popup _hidden">
+            <div class="popup__window">
+                <div class="pt-2 relative w-[240px] phone3:w-[400px]">
+                    <span class="absolute top-0 left-0 -rotate-[32deg] text-dark/10 text-[120px]">
+                        <i class="fa-solid fa-globe"></i>
+                    </span>
+                    <div class="popup__message">Ваше сообщение успешно отправлено!</div>
+                </div>
+                <button class="popup__close" type="button">Закрыть</button>
+            </div>
+        </div>
+        
+        <div class="gloader _hidden">
+            <div class="gloader__loader">
+                <div class="loader"></div>
+            </div>
+        </div>
     </div>
+
+    <script type="module" src="ts/main.ts"></script>
+    <script src="https://kit.fontawesome.com/38cd58b36f.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
