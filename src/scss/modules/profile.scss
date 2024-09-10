@@ -1,0 +1,19 @@
+.avatar {
+    @apply max-small:mx-auto small:absolute right-0 top-0 tablet:top-full w-[75%] phone3:w-[50%] small:w-[240px] desktop:w-[320px] drop-shadow-lg shrink-0;
+
+    &__img {
+        @apply absolute top-0 left-0 w-full h-full object-cover object-center rounded-md -rotate-2 z-10;
+    }
+
+    &__background {
+        @apply w-full pt-[100%] relative top-6 left-6 bg-gradient-to-tl from-dark to-dark/65 rounded-md rotate-3;
+    }
+}
+
+.profile-name {
+    @apply max-small:mt-12 max-small:text-center text-[26px] phone2:text-[32px] tablet:text-[48px] laptop:text-[64px] uppercase tracking-wider text-dark font-bold;
+}
+
+.profile-job {
+    @apply mt-4 max-small:text-center text-[18px] tablet:text-[24px] laptop:text-[32px] uppercase text-light font-medium;
+}

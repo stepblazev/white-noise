@@ -11,7 +11,6 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: './src/index.ru.html',
-                en: './src/index.en.html',
             }
         }
     }

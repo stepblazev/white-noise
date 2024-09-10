@@ -5,8 +5,10 @@
 @import './fonts.scss';
 
 @import './modules/browser.scss';
+@import './modules/animations.scss';
 @import "./modules/header.scss";
 @import "./modules/socials.scss";
+@import "./modules/profile.scss";
 @import "./modules/divisions.scss";
 @import "./modules/projects.scss";
 
@@ -95,6 +97,17 @@
             &:focus {
                 @apply border-dark bg-light/25 drop-shadow-md;
             }
+        }
+    }
+}
+
+@layer utilities {
+    .list-dash {
+        @apply pl-3;
+        list-style-type: "—";
+        
+        li {
+            @apply pl-2;
         }
     }
 }

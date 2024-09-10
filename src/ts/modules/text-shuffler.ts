@@ -2,27 +2,27 @@ import { getRandomNumber } from '../utils';
 
 type AllowedNodes = HTMLDivElement | HTMLSpanElement | HTMLParagraphElement;
 
-interface LineShufflerLine {
+interface TextShufflerLine {
     text: string;
     color: string;
 }
 
-interface LineShufflerProps {
+interface TextShufflerProps {
     node: AllowedNodes;
-    lines: LineShufflerLine[];
+    lines: TextShufflerLine[];
     speed?: number;
     pause?: number;
 }
 
-export class LineShuffler {
+export class TextShuffler {
     private _node: AllowedNodes;
-    private _lines: LineShufflerLine[];
+    private _lines: TextShufflerLine[];
 
     private _interval?: number = undefined;
     private _speed: number = 150;
     private _pause: number = 1000;
 
-    constructor(props: LineShufflerProps) {
+    constructor(props: TextShufflerProps) {
         this._node = props.node;
         this._lines = props.lines;
 
@@ -34,7 +34,7 @@ export class LineShuffler {
         }
     }
 
-    public get lines(): LineShufflerLine[] {
+    public get lines(): TextShufflerLine[] {
         return this._lines;
     }
 
@@ -82,7 +82,7 @@ export class LineShuffler {
         };
     }
 
-    private updateNode(line: Partial<LineShufflerLine>) {
+    private updateNode(line: Partial<TextShufflerLine>) {
         if (line.text !== undefined) this._node.textContent = `_${line.text}`;
         if (line.color !== undefined) {
             this._node.style.color = line.color;

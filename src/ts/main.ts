@@ -1,4 +1,4 @@
-import { LineShuffler } from "./modules/LineShuffler";
+import { TextShuffler } from "./modules/text-shuffler";
 import { hasTouchScreen, jumpTo } from "./utils";
 
 window.scrollTo({ top: 0, behavior: 'instant' })
@@ -6,7 +6,7 @@ window.scrollTo({ top: 0, behavior: 'instant' })
 // #region settings for changing text in the greeting
 const $toolNames = document.getElementById('tool-names');
 if ($toolNames) {
-    const lineShuffler = new LineShuffler({
+    const textShuffler = new TextShuffler({
         node: $toolNames,
         lines: [
             { text: 'JavaScript', color: '#f4ca3a' },
@@ -24,7 +24,7 @@ if ($toolNames) {
         pause: 1500
     });
 
-    lineShuffler.start();
+    textShuffler.start();
 } else {
     console.error('Tool names holder not found');
 }
@@ -183,6 +183,7 @@ const sectionsObserver = new IntersectionObserver(observerCallback, {
 observeAllSections();
 // #endregion
 
+
 // #region switch socials to fixed when scrolled
 const $socialsObserveArea = document.getElementById('greeting') as HTMLDivElement;
 const $socials = document.querySelector('.socials') as HTMLDivElement;
@@ -199,4 +200,24 @@ const socialsObserver = new IntersectionObserver((entries) => {
 });
 
 socialsObserver.observe($socialsObserveArea);
+// #endregion
+
+
+// #region animate element apearing on scroll
+const elementsToApear = document.querySelectorAll<HTMLElement>('[data-animate]');
+
+const apearAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.setAttribute('data-animate', '');
+        }
+    })    
+}, {
+    threshold: 0,
+    rootMargin: '-70% 0% -30% 0%',
+});
+
+elementsToApear.forEach(element => {
+    apearAnimationObserver.observe(element);
+});
 // #endregion

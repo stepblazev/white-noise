@@ -1,0 +1,23 @@
+[data-animate] {
+    @apply tablet:transition tablet:duration-[1200ms];
+}
+
+[data-animate="current"] {
+    @apply tablet:opacity-0 tablet:scale-75;
+}
+
+[data-animate="right"] {
+    @apply tablet:opacity-0 tablet:translate-x-[100px] tablet:scale-90;
+}
+
+[data-animate="left"] {
+    @apply tablet:opacity-0 tablet:translate-x-[-100px] tablet:scale-90;
+}
+
+[data-animate="top"] {
+    @apply tablet:opacity-0 tablet:translate-y-[-100px] tablet:scale-90;
+}
+
+[data-animate="bottom"] {
+    @apply tablet:opacity-0 tablet:translate-y-[100px] tablet:scale-90;
+}

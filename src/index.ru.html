@@ -44,10 +44,10 @@
                         </ul>
                     </nav>
 
-                    <a href="index.en.html" class="header__lang">
+                    <!-- <a href="index.en.html" class="header__lang">
                         <i class="fa-solid fa-earth-americas"></i>
                         ENG
-                    </a>
+                    </a> -->
 
                     <!-- <a href="/ru" class="header__lang">
                         <i class="fa-solid fa-earth-americas"></i>
@@ -105,27 +105,20 @@
 
             <section id="about" data-observe class="container">
                 <div class="mt-[60px] small:mt-[120px] relative">
-                    <div
-                        class="max-small:mx-auto small:absolute right-0 top-0 tablet:top-full aspect-square w-[75%] phone3:w-[50%] small:w-[240px] desktop:w-[320px] drop-shadow-lg shrink-0">
-                        <img src="assets/images/avatar.jpg" alt="me"
-                            class="absolute top-0 left-0 w-full h-full object-cover object-center rounded-md -rotate-2 z-10" />
-                        <div
-                            class="w-full pt-[100%] absolute top-6 left-6 bg-gradient-to-tl from-dark to-dark/65 rounded-md rotate-3">
-                        </div>
+                    <div class="avatar" data-animate="right">
+                        <img class="avatar__img" src="assets/images/avatar.jpg" alt="my photo" />
+                        <div class="avatar__background"></div>
                     </div>
-                    <h2
-                        class="max-small:mt-12 max-small:text-center text-[26px] phone2:text-[32px] tablet:text-[48px] laptop:text-[64px] uppercase tracking-wider text-dark font-bold">
+                    <h2 class="profile-name" data-animate="left">
                         Евгений Охватюк
                     </h2>
-                    <div
-                        class="mt-4 max-small:text-center text-[18px] tablet:text-[24px] laptop:text-[32px] uppercase text-light font-medium">
+                    <div class="profile-job" data-animate="left">
                         Fullstack-разработчик
                     </div>
                 </div>
-                <div class="mt-[32px] flex flex-col items-start space-y-4">
-                    <a href="https://www.google.com/maps/place/%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C/"
-                        target="_blank" class="cv-link">
-                        <i class="fa-solid fa-map-location-dot"></i> Беларусь, Минская область
+                <div class="mt-[32px] flex flex-col items-start space-y-4" data-animate="left">
+                    <a href="https://maps.app.goo.gl/rU9WBx3WCkm1oz4T9" target="_blank" class="cv-link">
+                        <i class="fa-solid fa-map-location-dot"></i> Беларусь, г. Минск
                     </a>
                     <a href="mailto:ohvatuki@gmail.com" class="cv-link">
                         <i class="fa-solid fa-envelope"></i> ohvatuki@gmail.com
@@ -134,7 +127,7 @@
                         <i class="fa-solid fa-phone"></i> +375-44-710-24-41
                     </a>
                 </div>
-                <a href="CV.pdf" target="_blank" class="mt-8 max-phone3:w-full btn">
+                <a href="CV.pdf" target="_blank" class="mt-8 max-phone3:w-full btn" data-animate="left">
                     <i class="fa-solid fa-download"></i> Скачать резюме PDF
                 </a>
                 <div class="mt-[100px] divisions">
@@ -143,17 +136,18 @@
                         <div class="division__icon" style="animation-duration: 4s;">
                             <i class="fa-regular fa-file-code"></i>
                         </div>
-                        <h3 class="division__title">
-                            Общая информация
-                        </h3>
-                        <div class="division__content">
-                            <p class="leading-normal text-dark/50">
-                                Мне 20 лет. Родом из Беларуси. Сейчас живу в Молодечно, но открыт к переезду.
-                                Работать могу как в офисе, так и на удаленке. Ищу позицию веб-разработчика в крупной
-                                компании, где смогу применять свои навыки в разработке сайтов и веб-приложений с
-                                упором на Frontend часть. Хочу продолжить профессиональное развитие в интересных и
-                                нестандартных проектах.
-                            </p>
+                        <div data-animate="current">
+                            <h3 class="division__title">
+                                Общая информация
+                            </h3>
+                            <div class="division__content">
+                                <p class="leading-normal text-dark/50">
+                                    Мне 20 лет, проживаю в Минске, Беларусь. Готов работать как в офисе, так и
+                                    удаленно. Хочу продолжить профессиональное развитие в крупной компании,
+                                    где смогу применять свои навыки в разработке сайтов и веб-приложений с
+                                    упором на Frontend часть.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -161,20 +155,24 @@
                         <div class="division__icon" style="animation-duration: 6s;">
                             <i class="fa-solid fa-book"></i>
                         </div>
-                        <h3 class="division__title">
-                            Образование
-                        </h3>
-                        <div class="division__content">
-                            <div class="text-dark/50">
-                                <p class="leading-normal">
-                                    <b>Среднее-специальное</b>
-                                    <br>
-                                    <br>
-                                    <b>Колледж "МТЭК"</b> — c 2019 – 2023 год
-                                    <br>
-                                    Программное обеспечение информационных технологий
-                                </p>
+                        <div data-animate="current">
+                            <h3 class="division__title">
+                                Образование
+                            </h3>
+                            <div class="division__content">
+                                <div class="text-dark/50">
+                                    <p class="leading-normal">
+                                        <b>Молодечненский торгово-экономический колледж (МТЭК)</b>
+                                        <br>
+                                        Сентябрь 2019 — Июль 2023
+                                        <br>
+                                        <br>
+                                        <b>Среднее-специальное</b>
+                                        <br>
+                                        Программное обеспечение информационных технологий
+                                    </p>
 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -183,14 +181,17 @@
                         <div class="division__icon" style="animation-duration: 8s;">
                             <i class="fa-regular fa-lightbulb"></i>
                         </div>
-                        <h3 class="division__title">
-                            Личные качества
-                        </h3>
-                        <div class="division__content">
-                            <div class="leading-normal text-dark/50">
-                                Я ответственный специалист и умею эффективной работать в команде. Люблю решать
-                                сложные и нестандартные задачи. Стремлюсь к постоянному обучению и профессиональному
-                                развитию, уделяю особое внимание деталям и качеству UI/UX.
+                        <div data-animate="current">
+                            <h3 class="division__title">
+                                Личные качества
+                            </h3>
+                            <div class="division__content">
+                                <div class="leading-normal text-dark/50">
+                                    Я ответственный специалист и умею эффективно работать в команде. Люблю
+                                    решать сложные и нестандартные задачи. Стремлюсь к постоянному обучению
+                                    и профессиональному развитию, уделяю особое внимание деталям и качеству
+                                    UI/UX.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -199,28 +200,26 @@
                         <div class="division__icon" style="animation-duration: 4s;">
                             <i class="fa-regular fa-building"></i>
                         </div>
-                        <h3 class="division__title">
-                            Опыт работы
-                        </h3>
-                        <div class="division__content">
-                            <div class="text-dark/50">
-                                <p>
-                                    <b>Веб-студия SakuraWeb</b> (1 год) — Август 2023 – <i>Настоящее время</i>
-                                </p>
-                                <ul
-                                    class="mt-6 list-inside list-disc [&>li]:leading-normal [&>li:not(:first-child)]:mt-1">
-                                    <li><b>Frontend</b> разработка, в том числе с использованием TypeScript,
-                                        Angular,
-                                        Tailwind и др.
-                                    </li>
-                                    <li><b>Backend</b> разработка на <b>PHP</b>, в том числе с использованием
-                                        <b>Laravel</b>. Интеграция верстки в CMS систему.
-                                    </li>
-                                    <li>Разработка <b>CRM-системы.</b></li>
-                                    <li>Внедрение новых возможностей в существующие проекты.</li>
-                                    <li>Работа с системами контроля версий GIT, такими как <b>GitHub и GitLab.</b>
-                                    </li>
-                                </ul>
+                        <div data-animate="current">
+                            <h3 class="division__title">
+                                Опыт работы
+                            </h3>
+                            <div class="division__content">
+                                <div class="text-dark/50">
+                                    <p class="leading-normal">
+                                        <b>ООО "САКУРАВЕБ"</b>
+                                        <br>
+                                        Август 2023 — Сентябрь 2024
+                                    </p>
+                                    <ul class="mt-6 list-dash [&>li]:leading-normal space-y-1">
+                                        <li>Frontend разработка, в том числе с использованием TypeScript, Angular,
+                                            Bootstrap, Tailwind и др.</li>
+                                        <li>Backend разработка на PHP, в том числе с использованием Laravel.</li>
+                                        <li>Интеграция верстки в CMS системы (преим. 1C-Bitrix).</li>
+                                        <li>Внедрение новых возможностей в существующие проекты.</li>
+                                        <li>Работа с системами контроля версий GIT, такими как GitHub и GitLab.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -229,19 +228,18 @@
                         <div class="division__icon" style="animation-duration: 5s;">
                             <i class="fa-solid fa-computer"></i>
                         </div>
-                        <h3 class="division__title">
-                            Навыки
-                        </h3>
-                        <div class="division__content">
-                            <ul
-                                class="text-dark/50 list-disc list-inside [&>li]:leading-normal [&>li:not(:first-child)]:mt-1">
-                                <li><b>Frontend:</b> JavaScript, TypeScript, Angular, React (базовые знания), SCSS,
-                                    Tailwind, Bootstrap</li>
-                                <li><b>Backend:</b> PHP, Laravel, Node.js + Express</li>
-                                <li><b>Базы данных:</b> MySQL, PostgreSQL</li>
-                                <li><b>Прочие технологии:</b> Docker, GIT, 1C-Битрикс, Битрикс24</li>
-                                <li><b>Прочее:</b> проектирование баз данных, разработка API</li>
-                            </ul>
+                        <div data-animate="current">
+                            <h3 class="division__title">
+                                С чем работаю
+                            </h3>
+                            <div class="division__content">
+                                <ul class="text-dark/50 list-disc list-dash [&>li]:leading-normal space-y-1">
+                                    <li><b>Frontend:</b> HTML, CSS, JavaScript, TypeScript, Angular, React, SCSS, Tailwind, Bootstrap, Font Awesome</li>
+                                    <li><b>Backend:</b> PHP, Laravel, NodeJS + Express</li>
+                                    <li><b>Базы данных:</b> MySQL, PostgreSQL</li>
+                                    <li><b>Прочее:</b> 1C-Bitrix, Docker, GitHub, GitLab</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -250,9 +248,9 @@
 
             <section id="projects" data-observe class="container">
                 <div class="mt-[100px]">
-                    <h2 class="title">Мои проекты</h2>
+                    <h2 class="title" data-animate="bottom">Мои проекты</h2>
                     <div class="mt-8">
-                        <div class="projects">
+                        <div class="projects" data-animate="bottom">
                             <div>
                                 <div class="project">
                                     <img class="project__preview"
@@ -311,10 +309,11 @@
                             </div>
                         </div>
                     </div>
-                    <p class="mt-8 small:w-2/3 text-[12px] tablet:text-body-2 text-dark/25 leading-normal">
+                    <p class="mt-8 small:w-2/3 text-[12px] tablet:text-body-2 text-dark/25 leading-normal"
+                        data-animate="current">
                         * Разработкой данного сайта занимался я — от создания дизайна и верстки до настройки сервера.
-                        Каждый элемент был продуман и реализован мной на мой вкус. Исходный код сайта можно найти <a
-                            href="https://github.com/stepblazev" target="_blank"
+                        Каждый элемент был продуман и реализован на мой вкус. Исходный код сайта можно найти <a
+                            href="https://github.com/stepblazev/white-noise" target="_blank"
                             class="text-dark/75 hover:underline">здесь</a>.
                     </p>
                 </div>
@@ -322,15 +321,24 @@
 
             <section id="feedback" data-observe class="container">
                 <div class="my-[100px]">
-                    <h2 class="title">Обратная связь</h2>
-                    <form action="feedback.php" method="POST" class="mt-8 mx-auto small:w-[75%] tablet2:w-[50%]">
+                    <h2 class="title" data-animate="bottom">Обратная связь</h2>
+                    <form action="feedback.php" method="POST" class="mt-8 mx-auto small:w-[75%] tablet2:w-[50%]"
+                        data-animate="bottom">
                         <div class="control">
                             <label class="control__label" for="feedback_email">
-                                <i class="fa-solid fa-envelope"></i>
-                                E-Mail
+                                <i class="fa-solid fa-circle-user"></i>
+                                Ваше имя
                             </label>
-                            <input class="control__input" type="text" id="feedback_email" placeholder="Ваш E-Mail"
+                            <input class="control__input" type="text" id="feedback_email" placeholder="Имя"
                                 class="control" />
+                        </div>
+                        <div class="mt-4 control">
+                            <label class="control__label" for="feedback_email">
+                                <i class="fa-solid fa-envelope"></i>
+                                Ваш E-Mail
+                            </label>
+                            <input class="control__input" type="text" id="feedback_email"
+                                placeholder="example@email.com" class="control" />
                         </div>
                         <div class="mt-4 control">
                             <label class="control__label" for="feedback_message">
@@ -345,6 +353,12 @@
                 </div>
             </section>
         </main>
+
+        <footer class="py-[32px] bg-dark">
+            <div class="text-white text-[80px] text-center">
+                <i class="fa-solid fa-code"></i>
+            </div>
+        </footer>
 
         <div id="cursor" class="cursor"></div>
         <div id="progressbar" class="progressbar"></div>
