@@ -3,13 +3,11 @@ import { popup } from "./modules/popup";
 import { TextShuffler } from "./modules/text-shuffler";
 import { hasTouchScreen, jumpTo } from "./utils";
 
-window.scrollTo({ top: 0, behavior: 'instant' })
-
 // #region | settings for changing text in the greeting
-const $toolNames = document.getElementById('tool-names');
-if ($toolNames) {
+const toolNames = document.getElementById('tool-names');
+if (toolNames) {
     const textShuffler = new TextShuffler({
-        node: $toolNames,
+        node: toolNames,
         lines: [
             { text: 'JavaScript', color: '#f4ca3a' },
             { text: 'Git', color: '#f64d27' },
@@ -34,42 +32,42 @@ if ($toolNames) {
 
 
 // #region | custom cursor settings
-const $cursor = document.getElementById('cursor') as HTMLDivElement | null;
+const cursor = document.getElementById('cursor') as HTMLDivElement | null;
 
 if (hasTouchScreen()) {
-    $cursor?.remove();
-} else if ($cursor) {
+    cursor?.remove();
+} else if (cursor) {
     let lastMouseX = 0;
     let lastMouseY = 0;
 
     window.addEventListener('mousemove', (event: MouseEvent) => {
-        $cursor.classList.remove('_hidden');
+        cursor.classList.remove('_hidden');
 
         lastMouseX = event.clientX;
         lastMouseY = event.clientY;
 
-        $cursor.style.left = `${event.pageX}px`;
-        $cursor.style.top = `${event.pageY}px`;
+        cursor.style.left = `${event.pageX}px`;
+        cursor.style.top = `${event.pageY}px`;
 
-        const $target = event.target as HTMLElement;
+        const target = event.target as HTMLElement;
         const tags = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'LABEL'];
         if (
-            tags.includes($target.tagName) ||
-            ($target.parentElement && tags.includes($target.parentElement?.tagName))
+            tags.includes(target.tagName) ||
+            (target.parentElement && tags.includes(target.parentElement?.tagName))
         ) {
-            $cursor.classList.add('_link');
+            cursor.classList.add('_link');
         } else {
-            $cursor.classList.remove('_link');
+            cursor.classList.remove('_link');
         }
     });
 
     window.addEventListener('scroll', () => {
-        $cursor.style.left = `${lastMouseX + window.scrollX}px`;
-        $cursor.style.top = `${lastMouseY + window.scrollY}px`;
+        cursor.style.left = `${lastMouseX + window.scrollX}px`;
+        cursor.style.top = `${lastMouseY + window.scrollY}px`;
     });
 
     window.addEventListener('mouseout', () => {
-        $cursor.classList.add('_hidden');
+        cursor.classList.add('_hidden');
     });
 } else {
     console.error('Custom cursor not found');
@@ -78,13 +76,13 @@ if (hasTouchScreen()) {
 
 
 // #region | header settings on scroll
-const $header = document.querySelector('.header') as HTMLDivElement | null;
-if ($header) {
+const header = document.querySelector('.header') as HTMLDivElement | null;
+if (header) {
     const checkScrollPositionForHeader = () => {
         if (window.scrollY > 180) {
-            $header.classList.add('_scrolled');
+            header.classList.add('_scrolled');
         } else {
-            $header.classList.remove('_scrolled');
+            header.classList.remove('_scrolled');
         }
     };
 
@@ -97,13 +95,13 @@ if ($header) {
 
 
 // #region | progressbar settings
-const $progressbar = document.getElementById('progressbar') as HTMLDivElement | null;
+const progressbar = document.getElementById('progressbar') as HTMLDivElement | null;
 if (hasTouchScreen()) {
-    $progressbar?.remove();
-} else if ($progressbar) {
+    progressbar?.remove();
+} else if (progressbar) {
     window.addEventListener('scroll', function () {
         const widthCoef = window.scrollY / (document.documentElement.offsetHeight - window.innerHeight);
-        $progressbar.style.width = `${widthCoef * 100}%`;
+        progressbar.style.width = `${widthCoef * 100}%`;
     });
 } else {
     console.error('Progressbar not found');
@@ -115,39 +113,39 @@ if (hasTouchScreen()) {
 const navbarLinks = document.querySelectorAll('.header__link') as NodeListOf<HTMLAnchorElement>;
 const sections = document.querySelectorAll('[data-observe]');
 
-const setActiveLink = ($targetLink: HTMLAnchorElement) => {
-    for (let $link of navbarLinks) {
-        $link.classList.remove('_active');
+const setActiveLink = (targetLink: HTMLAnchorElement) => {
+    for (let link of navbarLinks) {
+        link.classList.remove('_active');
     }
-    $targetLink.classList.add('_active');
+    targetLink.classList.add('_active');
 };
 
-const isActiveLink = ($targetLink: HTMLAnchorElement): boolean => {
-    return $targetLink.classList.contains('_active');
+const isActiveLink = (targetLink: HTMLAnchorElement): boolean => {
+    return targetLink.classList.contains('_active');
 };
 
 const unobserveAllSections = () => {
-    sections.forEach($section => sectionsObserver.unobserve($section));
+    sections.forEach(section => sectionsObserver.unobserve(section));
 };
 
 const observeAllSections = () => {
-    sections.forEach($section => sectionsObserver.observe($section));
+    sections.forEach(section => sectionsObserver.observe(section));
 };
 
 let prevTimeout: number;
 
-for (let $link of navbarLinks) {
-    $link.addEventListener('click', function (event: MouseEvent) {
+for (let link of navbarLinks) {
+    link.addEventListener('click', function (event: MouseEvent) {
         event.preventDefault();
-        const $targetSection = document.querySelector($link.getAttribute('href')!);
+        const targetSection = document.querySelector(link.getAttribute('href')!);
 
-        if (!isActiveLink($link) && $targetSection) {
-            setActiveLink($link);
+        if (!isActiveLink(link) && targetSection) {
+            setActiveLink(link);
             unobserveAllSections();
 
             const offset = window.innerWidth > 768 ? -250 : -200;
 
-            jumpTo($targetSection, {
+            jumpTo(targetSection, {
                 offset: offset,
                 duration: 1000,
             });
@@ -168,9 +166,9 @@ const observerCallback: IntersectionObserverCallback = (entries, observer) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
             const sectionId = entry.target.id;
-            for (let $link of navbarLinks) {
-                if ($link.getAttribute('href') === `#${sectionId}`) {
-                    setActiveLink($link);
+            for (let link of navbarLinks) {
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    setActiveLink(link);
                     break;
                 }
             }
@@ -189,21 +187,21 @@ observeAllSections();
 
 
 // #region | switch socials to fixed when scrolled
-const $socialsObserveArea = document.getElementById('greeting') as HTMLDivElement;
-const $socials = document.querySelector('.socials') as HTMLDivElement;
+const socialsObserveArea = document.getElementById('greeting') as HTMLDivElement;
+const socials = document.querySelector('.socials') as HTMLDivElement;
 
 const socialsObserver = new IntersectionObserver((entries) => {
     const targetEntry = entries[0];
     if (targetEntry.isIntersecting) {
-        $socials.classList.remove('_fixed');
+        socials.classList.remove('_fixed');
     } else {
-        $socials.classList.add('_fixed');
+        socials.classList.add('_fixed');
     }
 }, {
     threshold: 0.2
 });
 
-socialsObserver.observe($socialsObserveArea);
+socialsObserver.observe(socialsObserveArea);
 // #endregion
 
 
@@ -228,14 +226,14 @@ elementsToApear.forEach(element => {
 
 
 // #region | feedback form via ajax
-const $feedbackForm = document.getElementById('feedback-form') as HTMLFormElement;
+const feedbackForm = document.getElementById('feedback-form') as HTMLFormElement;
 
-$feedbackForm.addEventListener('submit', (event) => {
+feedbackForm.addEventListener('submit', (event) => {
     event.preventDefault();
     gloader.enable();
 
-    const { action, method } = $feedbackForm;
-    const formData = new FormData($feedbackForm);
+    const { action, method } = feedbackForm;
+    const formData = new FormData(feedbackForm);
 
     fetch(action, {
         method: method,
@@ -244,7 +242,7 @@ $feedbackForm.addEventListener('submit', (event) => {
         .then(response => response.json())
         .then(response => {
             if (response.success) {
-                $feedbackForm.reset();
+                feedbackForm.reset();
                 popup.show(response.message);
             } else {
                 popup.show(response.message);
@@ -257,4 +255,3 @@ $feedbackForm.addEventListener('submit', (event) => {
         });
 });
 // #endregion
-
