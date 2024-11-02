@@ -3,21 +3,21 @@
 }
 
 [data-animate="current"] {
-    @apply tablet:opacity-0 tablet:scale-75;
+    @apply tablet:opacity-0;
 }
 
 [data-animate="right"] {
-    @apply tablet:opacity-0 tablet:translate-x-[100px] tablet:scale-90;
+    @apply tablet:opacity-0 tablet:translate-x-[100px];
 }
 
 [data-animate="left"] {
-    @apply tablet:opacity-0 tablet:translate-x-[-100px] tablet:scale-90;
+    @apply tablet:opacity-0 tablet:translate-x-[-100px];
 }
 
 [data-animate="top"] {
-    @apply tablet:opacity-0 tablet:translate-y-[-100px] tablet:scale-90;
+    @apply tablet:opacity-0 tablet:translate-y-[-100px];
 }
 
 [data-animate="bottom"] {
-    @apply tablet:opacity-0 tablet:translate-y-[100px] tablet:scale-90;
+    @apply tablet:opacity-0 tablet:translate-y-[100px];
 }

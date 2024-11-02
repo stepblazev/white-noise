@@ -5,12 +5,122 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="keywords" content="Охватюк Евгений, веб-разработка, программирование, создание сайтов" />
+    <meta name="keywords" content="Охватюк, Охватюк Евгений, Охватюк программирование, Евгений программирование, веб-разработка, программирование" />
     <title>Веб-разработка | Евгений Охватюк</title>
     <link rel="stylesheet" href="scss/index.scss" />
+    <style>
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition-property: opacity, visibility;
+            transition-duration: 1s;
+            transition-timing-function: ease;
+            visibility: visible;
+            opacity: 1;
+            z-index: 1000;
+        }
+        
+        #preloader._loaded {
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        .sk-cube-grid {
+            width: 40px;
+            height: 40px;
+            margin: 100px auto;
+        }
+
+        .sk-cube-grid .sk-cube {
+            width: 33%;
+            height: 33%;
+            background-color: #27282b;
+            float: left;
+            -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+                    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+        }
+        .sk-cube-grid .sk-cube1 {
+            -webkit-animation-delay: 0.2s;
+                    animation-delay: 0.2s; }
+        .sk-cube-grid .sk-cube2 {
+            -webkit-animation-delay: 0.3s;
+                    animation-delay: 0.3s; }
+        .sk-cube-grid .sk-cube3 {
+            -webkit-animation-delay: 0.4s;
+                    animation-delay: 0.4s; }
+        .sk-cube-grid .sk-cube4 {
+            -webkit-animation-delay: 0.1s;
+                    animation-delay: 0.1s; }
+        .sk-cube-grid .sk-cube5 {
+            -webkit-animation-delay: 0.2s;
+                    animation-delay: 0.2s; }
+        .sk-cube-grid .sk-cube6 {
+            -webkit-animation-delay: 0.3s;
+                    animation-delay: 0.3s; }
+        .sk-cube-grid .sk-cube7 {
+            -webkit-animation-delay: 0s;
+                    animation-delay: 0s; }
+        .sk-cube-grid .sk-cube8 {
+            -webkit-animation-delay: 0.1s;
+                    animation-delay: 0.1s; }
+        .sk-cube-grid .sk-cube9 {
+            -webkit-animation-delay: 0.2s;
+                    animation-delay: 0.2s; }
+
+        @-webkit-keyframes sk-cubeGridScaleDelay {
+            0%, 70%, 100% {
+                -webkit-transform: scale3D(1, 1, 1);
+                        transform: scale3D(1, 1, 1);
+            } 35% {
+                -webkit-transform: scale3D(0, 0, 1);
+                        transform: scale3D(0, 0, 1); 
+            }
+        }
+
+        @keyframes sk-cubeGridScaleDelay {
+            0%, 70%, 100% {
+                -webkit-transform: scale3D(1, 1, 1);
+                        transform: scale3D(1, 1, 1);
+            } 35% {
+                -webkit-transform: scale3D(0, 0, 1);
+                        transform: scale3D(0, 0, 1);
+            } 
+        }
+    </style>
+    <script>
+        window.scrollTo({ top: 0, behavior: 'instant' })
+        window.addEventListener('load', () => {
+            const preloader = document.querySelector('#preloader');
+            if (preloader) {
+                preloader.classList.add('_loaded');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </head>
 
-<body>
+<body style="overflow-y: hidden;">
+    <div id="preloader">
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+          </div>
+    </div>
+    
     <div id="app">
 
         <header class="header animate-fadein">
@@ -44,17 +154,6 @@
                             </li>
                         </ul>
                     </nav>
-
-                    <!-- <a href="index.en.html" class="header__lang">
-                        <i class="fa-solid fa-earth-americas"></i>
-                        ENG
-                    </a> -->
-
-                    <!-- <a href="/ru" class="header__lang">
-                        <i class="fa-solid fa-earth-americas"></i>
-                        RUS
-                    </a> -->
-
                 </div>
             </div>
         </header>
@@ -106,18 +205,18 @@
 
             <section id="about" data-observe class="container">
                 <div class="mt-[60px] small:mt-[120px] relative">
-                    <div class="avatar" data-animate="right">
+                    <div class="avatar" data-animate="current">
                         <img class="avatar__img" src="assets/images/avatar.webp" alt="my photo" />
                         <div class="avatar__background"></div>
                     </div>
-                    <h2 class="profile-name" data-animate="left">
+                    <h2 class="profile-name" data-animate="current">
                         Евгений Охватюк
                     </h2>
-                    <div class="profile-job" data-animate="left">
+                    <div class="profile-job" data-animate="current">
                         Fullstack-разработчик
                     </div>
                 </div>
-                <div class="mt-[32px] flex flex-col items-start space-y-4" data-animate="left">
+                <div class="mt-[32px] flex flex-col items-start space-y-4" data-animate="current">
                     <a href="https://maps.app.goo.gl/rU9WBx3WCkm1oz4T9" target="_blank" class="cv-link">
                         <i class="fa-solid fa-map-location-dot"></i> Беларусь, г. Минск
                     </a>
@@ -128,7 +227,7 @@
                         <i class="fa-solid fa-phone"></i> +375-44-710-24-41
                     </a>
                 </div>
-                <a href="CV.pdf" target="_blank" class="mt-8 max-phone3:w-full btn" data-animate="left">
+                <a href="CV.pdf" target="_blank" class="mt-8 max-phone3:w-full btn" data-animate="current">
                     <i class="fa-solid fa-download"></i> Скачать резюме PDF
                 </a>
                 <div class="mt-[100px] divisions">
@@ -237,9 +336,9 @@
                                 <ul class="text-dark/50 list-disc list-dash [&>li]:leading-normal space-y-1">
                                     <li><b>Frontend:</b> HTML, CSS, JavaScript, TypeScript, Angular, React, SCSS,
                                         Tailwind, Bootstrap, Font Awesome</li>
-                                    <li><b>Backend:</b> PHP, Laravel, NodeJS + Express</li>
+                                    <li><b>Backend:</b> PHP, Laravel, 1C-Bitrix</li>
                                     <li><b>Базы данных:</b> MySQL, PostgreSQL</li>
-                                    <li><b>Прочее:</b> 1C-Bitrix, Docker, GitHub, GitLab</li>
+                                    <li><b>Прочее:</b> Docker, GitHub, GitLab</li>
                                 </ul>
                             </div>
                         </div>
@@ -249,10 +348,10 @@
             </section>
 
             <section id="projects" data-observe class="container">
-                <div class="mt-[100px]">
-                    <h2 class="title" data-animate="bottom">Мои проекты</h2>
+                <div class="mt-[100px]" data-animate="current">
+                    <h2 class="title">Мои проекты</h2>
                     <div class="mt-8">
-                        <div class="projects" data-animate="bottom">
+                        <div class="projects">
                             <div>
                                 <div class="project">
                                     <img class="project__preview" src="assets/images/template-1.webp"
@@ -321,10 +420,10 @@
             </section>
 
             <section id="feedback" data-observe class="container">
-                <div class="my-[100px]">
-                    <h2 class="title" data-animate="bottom">Обратная связь</h2>
+                <div class="my-[100px]" data-animate="current">
+                    <h2 class="title">Обратная связь</h2>
                     <form id="feedback-form" action="feedback.php" method="POST"
-                        class="mt-8 mx-auto small:w-[75%] tablet2:w-[50%]" data-animate="bottom">
+                        class="mt-8 mx-auto small:w-[75%] tablet2:w-[50%]">
                         <div class="control">
                             <label class="control__label" for="feedback_name">
                                 <i class="fa-solid fa-circle-user"></i>
@@ -354,14 +453,7 @@
             </section>
         </main>
 
-        <footer class="pt-[32px] pb-[72px]">
-            <div class="text-dark text-[80px] text-center">
-                <i class="fa-solid fa-code"></i>
-            </div>
-        </footer>
-        
-        <div id="cursor" class="cursor"></div>
-        <div id="progressbar" class="progressbar"></div>
+        <footer class="pt-[32px] pb-[72px]"></footer>
         
         <div class="popup _hidden">
             <div class="popup__window">
@@ -380,9 +472,12 @@
                 <div class="loader"></div>
             </div>
         </div>
+        
+        <div id="cursor" class="cursor"></div>
+        <div id="progressbar" class="progressbar"></div>
     </div>
 
-    <script type="module" src="ts/main.ts"></script>
+    <script type="module" src="ts/app.ts"></script>
     <script src="https://kit.fontawesome.com/38cd58b36f.js" crossorigin="anonymous"></script>
 </body>
 
